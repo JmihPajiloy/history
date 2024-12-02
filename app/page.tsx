@@ -1,6 +1,6 @@
 import Image from "next/image";
 import pic from "@/public/img.png";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 export default function Page() {
 
