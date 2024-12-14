@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const useFetchQuiz = (name: string) => {
   return useQuery({
-    queryKey: ["quiz"],
+    queryKey: ["quizes"],
     queryFn: () => axios.get("", { params: name })
   });
 };
