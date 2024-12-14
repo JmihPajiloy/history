@@ -1,28 +1,49 @@
-import Image from "next/image";
-import pic from "@/public/img.png";
-// import { Button } from "@/components/ui/button";
+import { ArticleCardDescription, ArticleCardTitle } from "@/components/article-card";
+import dynamic from "next/dynamic";
+
+// TODO: Костыль убрать
+const ArticleCard = dynamic(
+  () => import("@/components/article-card").then(mod => mod.ArticleCard),
+  { ssr: false }
+)
 
 export default function Page() {
 
   return (
     <main className="flex flex-col py-4 px-10 min-h-screen">
-      <div className="flex flex-col mb-10">
-        <h1 className="font-bold text-center font-serif text-8xl pb-5 border-y-2 border-y-accent-foreground ">
-          Ленинград, после войны
+        <h1 className="font-extrabold text-center text-6xl py-48">
+          Ленинград после победы
         </h1>
-        <div className="w-full h-1 bg-accent-foreground rounded my-2"/>
+      <h2 className="font-bold py-10  text-5xl">Статьи</h2>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <ArticleCard>
+          <ArticleCardTitle>Восстановление транспортной сети</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
+        <ArticleCard>
+          <ArticleCardTitle>Восстановление дорог, новый архитектурный план</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
+        <ArticleCard>
+          <ArticleCardTitle>Восстановление электроснабжения и коммуникаций</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
+        <ArticleCard>
+          <ArticleCardTitle>История Янтарной комнаты</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
+        <ArticleCard>
+          <ArticleCardTitle>Борьба с грызунами и болезнями</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
+        <ArticleCard>
+          <ArticleCardTitle>История Ленинградского зоопарка</ArticleCardTitle>
+          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+        </ArticleCard>
       </div>
-      <div className="w-96 h-fit flex flex-col gap-2">
-        <Image src={pic} alt="Main photo" className="rounded-md" />
-        {/*<Button className="w-full font-serif tracking-widest	 font-bold" size="lg">Тык</Button>*/}
-      </div>
-      <h2 className="font-bold py-10 font-serif text-5xl">Квизычи</h2>
+      <h2 className="font-bold py-10  text-5xl">Квизычи</h2>
       <div className="flex gap-4 w-full">
-        <div className="w-1/5 bg-primary h-96 rounded-md" />
-        <div className="w-1/5 bg-primary h-96 rounded-md" />
-        <div className="w-1/5 bg-primary h-96 rounded-md" />
-        <div className="w-1/5 bg-primary h-96 rounded-md" />
-        <div className="w-1/5 bg-primary h-96 rounded-md" />
+        Скоро будут
       </div>
     </main>
   );
