@@ -5,14 +5,19 @@ import React, { type PropsWithChildren } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
+import { usePathname } from "next/navigation";
 
 const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => {
-
+  const pathname = usePathname()
   return (
     <Button
       variant="link"
       onClick={(event) => {
+        if (pathname !== "/") {
+          return;
+        }
         event.preventDefault()
+        toast(pathname)
         if (!href.match(/\/#([A-Za-z0-9]+)/g)) {
           toast("Что-то пошло не так :(", {
             description: `Похоже, что ссылка ${href} не хэшовая`
