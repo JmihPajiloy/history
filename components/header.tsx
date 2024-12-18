@@ -5,7 +5,6 @@ import React, { type PropsWithChildren } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "sonner";
-import { usePathname } from "next/navigation";
 
 const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => {
 
@@ -14,13 +13,13 @@ const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => 
       variant="link"
       onClick={(event) => {
         event.preventDefault()
-        const id = href.match(/\/#([A-Za-z0-9]+)/g) ? href.slice(2) : null
-        if (!id) {
+        if (!href.match(/\/#([A-Za-z0-9]+)/g)) {
           toast("Что-то пошло не так :(", {
             description: `Похоже, что ссылка ${href} не хэшовая`
           })
           return
         }
+        const id = href.slice(2)
         const heading = document.getElementById(id)
         if (!heading) {
           toast("Что-то пошло не так :(", {
@@ -29,8 +28,6 @@ const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => 
           return;
         }
         heading.scrollIntoView({ behavior: "smooth", block: "start"})
-
-
       }}
       asChild
     >
