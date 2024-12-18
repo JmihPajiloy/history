@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import {  Inter, JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
-import React, { PropsWithChildren } from "react";
+import React, { type PropsWithChildren } from "react";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -50,8 +50,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <Providers>
       <Header/>
       {children}
+      <Footer/>
     </Providers>
-    <Footer/>
     </body>
     </html>
   );
