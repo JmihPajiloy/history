@@ -1,4 +1,3 @@
-import { ArticleCard, ArticleCardDescription, ArticleCardTitle } from "@/components/article-card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import React from "react";
@@ -7,7 +6,6 @@ import { Articles } from "@/components/articles";
 
 
 export default function Page() {
-  // const [ref, inView] = useInView();
   return (
     <main className="flex flex-col grow">
       <div className="flex justify-center items-center gap-8 p-4 bg-accent shadow">
