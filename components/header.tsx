@@ -17,7 +17,7 @@ const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => 
           return;
         }
         event.preventDefault()
-        toast(pathname)
+
         if (!href.match(/\/#([A-Za-z0-9]+)/g)) {
           toast("Что-то пошло не так :(", {
             description: `Похоже, что ссылка ${href} не хэшовая`
