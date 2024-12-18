@@ -4,7 +4,7 @@ import { ArticleCard, ArticleCardDescription, ArticleCardTitle } from "@/compone
 export const Articles = () => {
   return (
     <>
-      <h2 className="font-heading font-bold py-10 text-5xl" id="articles">Статьи</h2>
+      <h2 className="font-heading font-bold py-10 text-5xl scroll-mt-16" id="articles">Статьи</h2>
       {/*{inView ? "true" : "false"}*/}
       <div className="flex flex-wrap gap-4 justify-center">
         <ArticleCard>
