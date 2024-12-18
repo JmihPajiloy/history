@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const rem = (r: number) => r * parseFloat(window?.getComputedStyle(document?.documentElement)?.fontSize ?? "16");
+const rem = (r: number): number => {
+  if (typeof window !== "undefined" && typeof document !== "undefined") {
+    return r * parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+  }
+  return r * 16
+}
 
 export const ArticleCardTitle = ({ children, className, ...props }: PropsWithChildren<{className?: string}>) => {
   return (
@@ -32,7 +37,7 @@ export const ArticleCard = ({ children, href= "/articles/1", offset = 8.25 }: Pr
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" }
   }));
   return (
-    <article className="h-96 w-96 rounded-xl bg-cover bg-center bg-[url('/img.png')] overflow-hidden"
+    <article className="h-96 w-96 rounded-xl bg-cover bg-center bg-[url('/img.png')] overflow-hidden shadow"
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
              onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(60%)" } })}
     >

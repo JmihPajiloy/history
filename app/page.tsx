@@ -1,50 +1,32 @@
-import { ArticleCardDescription, ArticleCardTitle } from "@/components/article-card";
-import dynamic from "next/dynamic";
+import { ArticleCard, ArticleCardDescription, ArticleCardTitle } from "@/components/article-card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Image from "next/image";
+import React from "react";
+import { Quizes } from "@/components/quizes";
+import { Articles } from "@/components/articles";
 
-// TODO: Костыль убрать
-const ArticleCard = dynamic(
-  () => import("@/components/article-card").then(mod => mod.ArticleCard),
-  { ssr: false }
-)
 
 export default function Page() {
-
+  // const [ref, inView] = useInView();
   return (
-    <main className="flex flex-col py-4 px-10 min-h-screen">
-        <h1 className="font-extrabold text-center text-6xl py-48">
+    <main className="flex flex-col grow">
+      <div className="flex justify-center items-center gap-8 p-4 bg-accent shadow">
+        <div className="w-1/2">
+          <AspectRatio ratio={16 / 9}>
+            <Image
+              src="/img_1.png"
+              alt="Peterhof"
+              className="rounded-xl "
+              fill
+            />
+          </AspectRatio>
+        </div>
+        <h1 className="font-extrabold font-heading text-accent-foreground text-6xl">
           Ленинград после победы
         </h1>
-      <h2 className="font-bold py-10  text-5xl">Статьи</h2>
-      <div className="flex flex-wrap gap-4 justify-center">
-        <ArticleCard>
-          <ArticleCardTitle>Восстановление транспортной сети</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
-        <ArticleCard>
-          <ArticleCardTitle>Восстановление дорог, новый архитектурный план</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
-        <ArticleCard>
-          <ArticleCardTitle>Восстановление электроснабжения и коммуникаций</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
-        <ArticleCard>
-          <ArticleCardTitle>История Янтарной комнаты</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
-        <ArticleCard>
-          <ArticleCardTitle>Борьба с грызунами и болезнями</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
-        <ArticleCard>
-          <ArticleCardTitle>История Ленинградского зоопарка</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
-        </ArticleCard>
       </div>
-      <h2 className="font-bold py-10  text-5xl">Квизычи</h2>
-      <div className="flex gap-4 w-full">
-        Скоро будут
-      </div>
+      <Articles />
+      <Quizes />
     </main>
   );
 }
