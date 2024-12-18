@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 const NotFound = () => {
   return (
-    <main className="flex items-center h-screen justify-center flex-col">
+    <main className="flex items-center grow justify-center flex-col">
       <h1 className="font-semibold font-mono text-8xl py-8">#404 :(</h1>
       <p className="font-medium">Страница не найдена</p>
-      <Button asChild className="mt-4 ">
+      <Button asChild className="mt-4 mb-2">
         <Link href="/">
           На главную
         </Link>
