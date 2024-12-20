@@ -21,7 +21,7 @@ export const ArticleCardTitle = ({ children, className, ...props }: PropsWithChi
 
 export const ArticleCardDescription = ({ children, className, ...props }: PropsWithChildren<{className?: string}>) => {
   return (
-    <p {...props} className={cn("text-white my-4 h-16", className)}>{children}</p>
+    <p {...props} className={cn("text-white mt-4 mb-3 h-[4.25rem] text-ellipsis overflow-hidden", className)}>{children}</p>
   );
 };
 
@@ -31,15 +31,18 @@ type Props = {
   href?: string
 }
 
-export const ArticleCard = ({ children, href = "/", offset = 8.25 }: PropsWithChildren<Props>) => {
+export const ArticleCard = ({ children, href = "/", background = "/img.png", offset = 8.25 }: PropsWithChildren<Props>) => {
   const [props, api] = useSpring(() => ({
     from: { y: 0, backdropFilter: "brightness(60%)" },
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" }
   }));
   return (
-    <article className="h-96 w-96 rounded-xl bg-cover bg-center bg-[url('/img.png')] overflow-hidden shadow"
+    <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
              onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(60%)" } })}
+             style={{
+               backgroundImage: `url('${background}')`
+             }}
     >
       <animated.div
         className="h-[200%] w-full p-4 backdrop-brightness-75"

@@ -1,8 +1,7 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import React from "react";
-import { Quizes } from "@/components/quizes";
-import { Articles } from "@/components/articles";
+import { Articles, Quizes } from "@/components/topics";
 
 
 export default function Page() {

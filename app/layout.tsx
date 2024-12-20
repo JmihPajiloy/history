@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import {  Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
-import React, { type PropsWithChildren } from "react";
-import { Providers } from "@/components/providers";
+import { type PropsWithChildren } from "react";
 import { Header } from "@/components/header";
+import { Providers } from "@/components/providers";
 import { Footer } from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  weight: "100 900",
+  weight: "100 900"
 });
 
 const inter = Inter({
@@ -23,7 +23,7 @@ const inter = Inter({
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono"
-})
+});
 
 // const lora = Lora({
 //   subsets: ["latin", "cyrillic", "cyrillic-ext"],
@@ -48,9 +48,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
       className={cn(geistSans.variable, inter.variable, mono.variable, "antialiased scroll-smooth flex flex-col min-h-screen bg-background")}
     >
     <Providers>
-      <Header/>
+      <Header />
       {children}
-      <Footer/>
+      <Footer />
     </Providers>
     </body>
     </html>

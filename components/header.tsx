@@ -46,14 +46,10 @@ const LinkButton = ({ href, children }: PropsWithChildren<{ href: string }>) => 
 export const Header = () => {
 
   return (
-    <header className="w-full h-16 flex justify-center items-center sticky top-0 bg-background z-30 shadow">
+    <header className="w-full h-16 flex justify-center items-center sticky shadow top-0 bg-background z-30">
       <nav className="gap-2">
-        <LinkButton href="/#quizes">
-          Квизы
-        </LinkButton>
-        <LinkButton href="/#articles">
-          Статьи
-        </LinkButton>
+        <LinkButton href="/#articles">Статьи</LinkButton>
+        <LinkButton href="/#quizes">Квизы</LinkButton>
       </nav>
     </header>
   );
