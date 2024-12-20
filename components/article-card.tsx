@@ -31,7 +31,7 @@ type Props = {
   href?: string
 }
 
-export const ArticleCard = ({ children, href= "/articles/1", offset = 8.25 }: PropsWithChildren<Props>) => {
+export const ArticleCard = ({ children, href = "/", offset = 8.25 }: PropsWithChildren<Props>) => {
   const [props, api] = useSpring(() => ({
     from: { y: 0, backdropFilter: "brightness(60%)" },
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" }

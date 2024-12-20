@@ -23,7 +23,7 @@ export const Articles = () => {
           <ArticleCardTitle>История Янтарной комнаты</ArticleCardTitle>
           <ArticleCardDescription>внутри карта</ArticleCardDescription>
         </ArticleCard>
-        <ArticleCard>
+        <ArticleCard href="/articles/rodent-and-disease-control">
           <ArticleCardTitle>Борьба с грызунами и болезнями</ArticleCardTitle>
           <ArticleCardDescription>внутри карта</ArticleCardDescription>
         </ArticleCard>

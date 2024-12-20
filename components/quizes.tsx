@@ -5,7 +5,7 @@ export const Quizes = () => {
     <>
       <h2 className="font-bold py-10 font-heading text-5xl scroll-mt-14" id="quizes">Квизы</h2>
       <div className="flex gap-4 w-full h-[1000px]">
-        Скоро будут
+        Скоро бу
       </div>
     </>
   );
