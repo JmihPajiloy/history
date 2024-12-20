@@ -15,10 +15,12 @@ const Back = () => (
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <main className="py-4 px-48 grow">
-      <Back/>
-      {children}
-      <Back/>
+    <main className="py-4 grow flex flex-col items-center">
+      <div className="max-w-[48rem] mx-4">
+        <Back/>
+        {children}
+        <Back/>
+      </div>
     </main>
   );
 };
