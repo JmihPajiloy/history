@@ -1,6 +1,6 @@
 "use client";
 
-import React, { type PropsWithChildren } from "react";
+import React, { type PropsWithChildren, useEffect } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -51,10 +51,13 @@ export const ArticleCard = ({
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" },
     default: { y: 0, backdropFilter: "brightness(60%)" },
   }));
+  useEffect(() => {
+    api.set({ y: 0, backdropFilter: "brightness(60%)" })
+  }, [api]);
   return (
     <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
-             // onMouseEnter={() => setClosed(false)}
-             // onMouseLeave={() => setClosed(true)}
+      // onMouseEnter={() => setClosed(false)}
+      // onMouseLeave={() => setClosed(true)}
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
              onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(60%)" } })}
              style={{
@@ -63,7 +66,7 @@ export const ArticleCard = ({
     >
       <animated.div
         className="h-[200%] w-full p-4 backdrop-brightness-75"
-        style={{ ...props, overflowAnchor: "none" }}
+        style={{ ...props }}
       >
         {children}
         <Button className="w-full" variant="secondary" asChild>
