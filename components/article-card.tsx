@@ -41,6 +41,7 @@ export const ArticleCard = ({ children, href = "/", background = "/img.png", off
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
              onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(60%)" } })}
              style={{
+               overflowAnchor: "none",
                backgroundImage: `url('${background}')`
              }}
     >

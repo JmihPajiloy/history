@@ -25,7 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       className="mt-6 border-l-2 pl-6 italic">{children}</blockquote>,
     hr: () => <hr className="my-2" />,
     a: ({ children, href = "" }: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => (
-      <Link href={href} className="text-primary underline-offset-4 hover:underline flex"><LinkIcon className="mr-2 h-4 w-4" />{children}</Link>
+      <Link href={href} className="text-primary underline-offset-4 hover:underline flex items-center"><LinkIcon className="mr-2 h-4 w-4" />{children}</Link>
     ),
     ...components
   };
