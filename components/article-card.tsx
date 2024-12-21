@@ -52,7 +52,8 @@ export const ArticleCard = ({
     default: { y: 0, backdropFilter: "brightness(60%)" },
   }));
   useEffect(() => {
-    api.set({ y: 0, backdropFilter: "brightness(60%)" })
+    const timeout = setTimeout(() => api.set({ y: 0, backdropFilter: "brightness(60%)" }), 0)
+    return () => clearTimeout(timeout)
   }, [api]);
   return (
     <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
