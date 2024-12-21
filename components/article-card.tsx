@@ -1,11 +1,10 @@
 "use client";
 
-import React, { type PropsWithChildren, useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import React, { type PropsWithChildren } from "react";
+import { animated, useSpring } from "@react-spring/web";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { fastRefreshReducer } from "next/dist/client/components/router-reducer/reducers/fast-refresh-reducer";
 
 const rem = (r: number): number => {
   if (typeof window !== "undefined" && typeof document !== "undefined") {
