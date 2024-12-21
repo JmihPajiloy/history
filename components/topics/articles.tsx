@@ -8,19 +8,19 @@ export const Articles = () => {
       <div className="flex flex-wrap gap-4 justify-center">
         <ArticleCard>
           <ArticleCardTitle>Восстановление транспортной сети</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+          <ArticleCardDescription>Текст текст текст текст</ArticleCardDescription>
         </ArticleCard>
         <ArticleCard>
           <ArticleCardTitle>Восстановление дорог, новый архитектурный план</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+          <ArticleCardDescription>Текст текст текст текст</ArticleCardDescription>
         </ArticleCard>
         <ArticleCard>
           <ArticleCardTitle>Восстановление электроснабжения и коммуникаций</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+          <ArticleCardDescription>Текст текст текст текст</ArticleCardDescription>
         </ArticleCard>
         <ArticleCard>
           <ArticleCardTitle>История Янтарной комнаты</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+          <ArticleCardDescription>Текст текст текст текст</ArticleCardDescription>
         </ArticleCard>
         <ArticleCard href="/articles/rodent-and-disease-control" background="/photo1.jpeg">
           <ArticleCardTitle>Борьба с грызунами и болезнями</ArticleCardTitle>
@@ -28,7 +28,7 @@ export const Articles = () => {
         </ArticleCard>
         <ArticleCard>
           <ArticleCardTitle>История Ленинградского зоопарка</ArticleCardTitle>
-          <ArticleCardDescription>внутри карта</ArticleCardDescription>
+          <ArticleCardDescription>Текст текст текст текст</ArticleCardDescription>
         </ArticleCard>
       </div>
     </>
