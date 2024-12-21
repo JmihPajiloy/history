@@ -44,12 +44,13 @@ export const ArticleCard = ({
                             }: PropsWithChildren<Props>) => {
   // const [closed, setClosed] = useState(false);
   // const props = useSpring({
-  //   from: { y: closed ? -rem(offset) : 0, backdropFilter: !closed ? "brightness(40%)" : "brightness(60%)" },
-  //   to: { y: closed ? 0: -rem(offset) , backdropFilter: !closed ? "brightness(60%)" : "brightness(40%)" }
+  //   from: { y: closed ? -rem(offset) : 0, backdropFilter: closed ? "brightness(40%)" : "brightness(60%)" },
+  //   to: { y: closed ? 0: -rem(offset) , backdropFilter: closed ? "brightness(60%)" : "brightness(40%)" }
   // });
   const [props, api] = useSpring(() => ({
     from: { y: 0, backdropFilter: "brightness(60%)" },
-    to: { y: -rem(offset), backdropFilter: "brightness(40%)" }
+    to: { y: -rem(offset), backdropFilter: "brightness(40%)" },
+    default: { y: 0, backdropFilter: "brightness(60%)" },
   }));
   return (
     <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
