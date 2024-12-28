@@ -118,5 +118,5 @@ export const Countdown = ({ period, end }: { period: number, end: string }) => {
 };
 
 export const CountdownFallback = () => <Skeleton
-  className="rounded-lg px-[calc(1rem+1px)] py-3 w-fit h-fit text-xl font-mono font-medium">00:00:00</Skeleton>;
+  className="rounded-lg px-[calc(1rem+1px)] py-[0.75rem+1px] w-fit h-fit text-xl font-mono font-medium">00:00:00</Skeleton>;
 
