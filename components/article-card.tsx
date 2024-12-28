@@ -44,29 +44,30 @@ export const ArticleCard = ({
   const reducedMotion = useReducedMotion();
   const [props, api] = useSpring(() => ({
     immediate: reducedMotion,
-    from: { y: 0, backdropFilter: "brightness(100%)" },
+    from: { y: -30, backdropFilter: "brightness(60%)" },
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" },
-    config: config.wobbly
+    config: config.gentle
   }));
 
   useEffect(() => {
     // Костыль ))
-    const timeout = setTimeout(() => api.set({ y: 0, backdropFilter: "brightness(100%)" }), 0);
+    const timeout = setTimeout(() => api.set({ y: -30, backdropFilter: "brightness(60%)" }), 0);
     return () => clearTimeout(timeout);
   }, [api]);
 
   return (
-    <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow brightness-60"
+    <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
-             onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(100%)" } })}
+             onMouseLeave={() => api.start({ to: { y: -30, backdropFilter: "brightness(60%)" } })}
              style={{
                backgroundImage: `url('${background}')`
              }}
     >
       <animated.div
         className="h-[200%] w-full p-4 backdrop-brightness-75"
-        style={{ ...props }}
+        style={props}
       >
+        <div className="h-[30px]" />
         {children}
         <Button className="w-full" variant="secondary" asChild>
           <Link href={href}>
