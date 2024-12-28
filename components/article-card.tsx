@@ -51,14 +51,14 @@ export const ArticleCard = ({
 
   useEffect(() => {
     // Костыль ))
-    const timeout = setTimeout(() => api.set({ y: 0, backdropFilter: "brightness(60%)" }), 0);
+    const timeout = setTimeout(() => api.set({ y: 0, backdropFilter: "brightness(100%)" }), 0);
     return () => clearTimeout(timeout);
   }, [api]);
 
   return (
-    <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
+    <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow brightness-60"
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}
-             onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(60%)" } })}
+             onMouseLeave={() => api.start({ to: { y: 0, backdropFilter: "brightness(100%)" } })}
              style={{
                backgroundImage: `url('${background}')`
              }}
