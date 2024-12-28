@@ -1,7 +1,7 @@
 "use client";
 
-import React, { type PropsWithChildren, useEffect } from "react";
-import { animated, useSpring } from "@react-spring/web";
+import { type PropsWithChildren, useEffect } from "react";
+import { animated, config, useReducedMotion, useSpring } from "@react-spring/web";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -41,15 +41,20 @@ export const ArticleCard = ({
                               background = "/img.png",
                               offset = 8.25
                             }: PropsWithChildren<Props>) => {
+  const reducedMotion = useReducedMotion();
   const [props, api] = useSpring(() => ({
+    immediate: reducedMotion,
     from: { y: 0, backdropFilter: "brightness(60%)" },
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" },
+    config: config.wobbly
   }));
+
   useEffect(() => {
-    // Костыль
+    // Костыль ))
     const timeout = setTimeout(() => api.set({ y: 0, backdropFilter: "brightness(60%)" }), 0);
     return () => clearTimeout(timeout);
   }, [api]);
+
   return (
     <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"
              onMouseEnter={() => api.start({ to: { y: -rem(offset), backdropFilter: "brightness(40%)" } })}

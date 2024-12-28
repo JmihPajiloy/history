@@ -5,9 +5,9 @@ import { ArrowLeft } from "lucide-react";
 
 const Back = () => (
   <div className="flex py-4">
-    <Button variant="secondary" asChild>
+    <Button variant="default" asChild>
       <Link href="/">
-        <ArrowLeft className="mr-2" /> На главную
+        <ArrowLeft className="mr-1" /> На главную
       </Link>
     </Button>
   </div>

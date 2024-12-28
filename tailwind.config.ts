@@ -11,8 +11,8 @@ const config: Config = {
   theme: {
     fontFamily: {
       sans: ["var(--font-inter)"],
-      heading: ["var(--font-geist-sans)"],
-      serif: ["var(--font-lora)"],
+      inter: ["var(--font-inter)"],
+      heading: ["var(--font-inter)"],
       mono: ["var(--font-mono)"]
     },
     extend: {

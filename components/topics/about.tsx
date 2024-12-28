@@ -1,4 +1,3 @@
-import React from "react";
 
 // TODO: Раздел о проекте
 export const Articles = () => {

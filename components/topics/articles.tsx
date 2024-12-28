@@ -1,4 +1,3 @@
-import React from "react";
 import { ArticleCard, ArticleCardDescription, ArticleCardTitle } from "@/components/article-card";
 
 export const Articles = () => {
