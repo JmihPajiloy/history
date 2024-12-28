@@ -44,7 +44,7 @@ export const ArticleCard = ({
   const reducedMotion = useReducedMotion();
   const [props, api] = useSpring(() => ({
     immediate: reducedMotion,
-    from: { y: 0, backdropFilter: "brightness(60%)" },
+    from: { y: 0, backdropFilter: "brightness(100%)" },
     to: { y: -rem(offset), backdropFilter: "brightness(40%)" },
     config: config.wobbly
   }));
