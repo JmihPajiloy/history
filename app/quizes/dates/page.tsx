@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import { RadioCard, RadioGroup } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
