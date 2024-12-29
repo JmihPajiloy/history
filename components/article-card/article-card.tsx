@@ -14,7 +14,6 @@ export const ArticleCard = ({
                               children,
                               background = "/img.png",
                               dummyHeight = 160
-                              // offset = 8.25
                             }: PropsWithChildren<Props>) => {
   const [cardRef] = useArticleCard();
   const [, buttonHeight] = useArticleCardButton();
