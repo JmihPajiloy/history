@@ -107,7 +107,7 @@ export const Countdown = ({ period, end }: { period: number, end: string }) => {
 
   return (
     <div
-      className="flex select-none text-xl w-fit h-fit px-4 py-3 bg-muted text-foreground  font-mono font-medium border rounded-lg shadow overflow-hidden">
+      className="flex select-none text-xl w-fit h-fit px-4 py-3 bg-muted text-foreground font-mono font-medium border rounded-lg shadow overflow-hidden">
       {
         Array.from(count).map((x, index) => (
           <CountdownDigit value={x} key={index} />
@@ -118,5 +118,5 @@ export const Countdown = ({ period, end }: { period: number, end: string }) => {
 };
 
 export const CountdownFallback = () => <Skeleton
-  className="rounded-lg px-[calc(1rem+1px)] py-[calc(0.75rem+1px)] w-fit h-fit text-xl font-mono font-medium">00:00:00</Skeleton>;
+  className="rounded-lg px-[calc(1rem+1px)] py-[calc(0.75rem+1px)] w-fit h-fit text-xl font-mono font-medium shadow">00:00:00</Skeleton>;
 
