@@ -7,29 +7,12 @@ import { ArrowLeft } from "lucide-react";
 import { animated, config, useSpring } from "@react-spring/web";
 
 const Back = () => {
-  const [style, api] = useSpring(() => ({
-    from: { transform: "translateX(0)" },
-    to: { transform: "translateX(0)" },
-    reverse: true,
-    immediate: false,
-    // reverse: true,
-    config: config.wobbly,
-  }));
   return (
     <div className="flex py-4">
-      <Button variant="default" onMouseDown={() => api.start({
-        from: { transform: "translateX(0)" },
-        to: [
-          { transform: "translateX(-50%)" },
-          { transform: "translateX(0)" }
-        ],
-      })} asChild>
+      <Button variant="default" asChild>
         <Link href="/">
-        <animated.div style={style} className="mr-1">
-          <ArrowLeft />
-        </animated.div>
-        {/*</div>*/}
-        На главную
+          <ArrowLeft className="mr-1" />
+          На главную
         </Link>
       </Button>
     </div>
