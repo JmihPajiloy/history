@@ -1,5 +1,3 @@
-"use client";
-
 import type { PropsWithChildren } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
