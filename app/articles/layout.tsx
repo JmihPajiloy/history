@@ -4,7 +4,6 @@ import type { PropsWithChildren } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { animated, config, useSpring } from "@react-spring/web";
 
 const Back = () => {
   return (
