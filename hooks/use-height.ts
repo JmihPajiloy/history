@@ -1,3 +1,5 @@
+"use client";
+
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { fromEvent, startWith } from "rxjs";
 

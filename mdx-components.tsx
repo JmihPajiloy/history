@@ -6,7 +6,7 @@ import { Link as LinkIcon } from "lucide-react";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }: PropsWithChildren) => <h1
-      className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl pb-2 mt-8">{children}</h1>,
+      className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pb-2 mt-8">{children}</h1>,
     h2: ({ children }: PropsWithChildren) => <h2
       className="scroll-m-20 border-b pb-2 text-3xl font-semibold font-heading tracking-tight first:mt-0 mt-8">{children}</h2>,
     h3: ({ children }: PropsWithChildren) => <h3

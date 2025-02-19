@@ -28,11 +28,11 @@ export const ArticleCard = ({
     immediate: reducedMotion,
     from: start,
     to: end,
-    config: config.wobbly
+    config: config.gentle
   }));
 
   useEffect(() => {
-    // Костыль ))
+    // Fix initial animation state
     const timeout = setTimeout(() => api.set(start), 0);
     return () => clearTimeout(timeout);
   }, [api]);

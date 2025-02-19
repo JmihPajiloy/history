@@ -18,7 +18,7 @@ type TransitionState = {
   position: CSSProperties["position"]
 }
 
-export const CountdownDigit = ({ value }: CountdownDigitProps) => {
+const CountdownDigit = ({ value }: CountdownDigitProps) => {
   const transRef = useSpringRef();
   const reducedMotion = useReducedMotion();
 

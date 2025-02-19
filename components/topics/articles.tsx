@@ -5,6 +5,7 @@ import {
   ArticleCardProvider,
   ArticleCardTitle
 } from "@/components/article-card";
+import { usePathname, useSearchParams } from "next/navigation";
 // import dynamic from "next/dynamic";
 
 const articles = [

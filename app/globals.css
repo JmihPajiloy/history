@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
@@ -21,8 +21,8 @@ body {
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
 
-        --background: 31 98.35% 98.46%;
-        --foreground: 31 6.7% 0.92%;
+        --background: 34 49% 91%;
+        --foreground: 13 46% 25%;
 
         --muted: 31 6.7% 92.3%;
         --muted-foreground: 31 3.35% 42.3%;
@@ -36,14 +36,14 @@ body {
         --border: 31 11.7% 89.92%;
         --input: 31 11.7% 89.92%;
 
-        --primary: 31 67% 23%;
-        --primary-foreground: 31 1.34% 92.3%;
+        --primary: 23 43% 38%;
+        --primary-foreground: 34 49% 91%;
 
         --secondary: 31 3.35% 96.15%;
         --secondary-foreground: 31 5.0200000000000005% 12.3%;
 
-        --accent: 31 3.35% 96.15%;
-        --accent-foreground: 31 5.0200000000000005% 12.3%;
+        --accent: 13 46% 25%;
+        --accent-foreground: 34 49% 91%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;

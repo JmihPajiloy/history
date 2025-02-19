@@ -1,9 +1,11 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { Articles, Quizes } from "@/components/topics";
+import { auth } from "@/auth";
 
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
   return (
     <main className="flex flex-col grow">
       <div className="flex justify-center items-center gap-8 p-4">
@@ -17,11 +19,12 @@ export default function Page() {
             />
           </AspectRatio>
         </div>
-        <h1 className="font-extrabold font-heading lg:text-left text-center text-accent-foreground text-6xl">
+        <h1 className="font-extrabold font-heading lg:text-left text-center text-foreground text-6xl">
           Ленинград после победы
         </h1>
       </div>
       <Articles />
+      {/*Здравствуйте, {session?.user?.name ?? "незнакомец"}!*/}
       <Quizes />
     </main>
   );

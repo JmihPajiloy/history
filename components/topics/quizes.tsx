@@ -1,20 +1,37 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+"use client";
 
+import { Button } from "@/components/ui/button";
+import { login } from "@/app/actions";
+import { useSession } from "next-auth/react";
+import { LockKeyhole } from "lucide-react";
+
+
+const Authorisation = () => {
+  return (
+    <div
+      className="items-center flex flex-col gap-4 py-20">
+      <LockKeyhole className="h-12 w-12" />
+      <p className="text-center text-sm max-w-96">
+        Чтобы пройти квизы, войдите в свой аккаунт VK.<br /> Так мы сможем учесть ваш результат в рейтинге
+      </p>
+      <Button className="w-80" onClick={() => login()}>Войти через VK</Button>
+    </div>
+  );
+};
+
+const QuizList = () => {
+  return <>Квизов пока нет</>
+}
 
 export const Quizes = () => {
+  const session = useSession();
   return (
-    <>
-      <h2 className="font-bold pt-10 px-4 font-heading text-5xl scroll-mt-14" id="quizes">Квизы</h2>
-      <p className="max-w-2xl text-lg font-light text-foreground pl-4">Пройдите квизы, чтобы проверить свои знания</p>
-      <div className="flex gap-4 w-full h-[1000px] px-4 mt-6">
-        <Button asChild>
-          <Link href="/quizes/dates">Демо квиза</Link>
-        </Button>
-        <Button asChild>
-          <Link href="/quizes">Демо регистрации в квизе</Link>
-        </Button>
-      </div>
-    </>
+    <section className="flex flex-col gap-4 items-center text-accent-foreground bg-accent rounded-t-3xl mt-10 p-10">
+      <h2 className="font-bold pt-10 px-4 font-heading text-5xl scroll-mt-14"
+          id="quizes">Квизы</h2>
+      {
+        (session.status !== "authenticated") ? <Authorisation /> : <QuizList/>
+      }
+    </section>
   );
 };
