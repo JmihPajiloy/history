@@ -28,55 +28,55 @@ const articles = [
   {
     title: "История Янтарной комнаты",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/the-amber-room",
     background: "/img.png"
   },
   {
     title: "Борьба с грызунами и болезнями",
     description: "После победы в Великой Отечественной войне Ленинград оказался в крайне тяжелой санитарно-эпидемиологической обстановке",
-    href: "/articles/restoration-of-the-transport-network",
+    href: "/articles/rodent-and-disease-control",
     background: "/photo1.jpeg"
   },
   {
     title: "История Ленинградского зоопарка",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/leningrad-zoo",
     background: "/img.png"
   },
   {
     title: "История коллекции семян в ВИР Вавилова",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/the-history-of-the-seed-collection",
     background: "/img.png"
   },
   {
-    title: "Восстановление промышленных предприятий",
+    title: "Восстановление предприятий",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/restoration-of-enterprises",
     background: "/img.png"
   },
   {
     title: "Развитие метро не как в Москве",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/leningrad-metro",
     background: "/img.png"
   },
   {
     title: "Восстановление пищевой промышленности (карточки были до 47 года)",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/restoration-of-the-food-industry",
     background: "/img.png"
   },
   {
     title: "Строительство малометражек с отоплением вместо общежитий и бараков",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/construction-of-small-apartments",
     background: "/img.png"
   },
   {
-    title: "Детский вопрос (лечение, образование, обучение и развлечения)",
+    title: "Детский вопрос",
     description: "Текст текст текст текст",
-    href: "/404",
+    href: "/articles/the-issue-of-children",
     background: "/img.png"
   }
 ];
