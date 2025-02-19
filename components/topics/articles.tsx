@@ -5,8 +5,6 @@ import {
   ArticleCardProvider,
   ArticleCardTitle
 } from "@/components/article-card";
-import { usePathname, useSearchParams } from "next/navigation";
-// import dynamic from "next/dynamic";
 
 const articles = [
   {
@@ -82,11 +80,6 @@ const articles = [
     background: "/img.png"
   }
 ];
-
-// const ArticleCard = dynamic(() => import("@/components/article-card").then(({ ArticleCard }) => ArticleCard), {
-//   ssr: false,
-//   loading: () => <ArticleCardFallback />
-// });
 
 
 export const Articles = () => {
