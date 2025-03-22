@@ -26,6 +26,7 @@ export const QuizList = () => {
     return <>
       <QuizCard is_completed/>
       <QuizCard progress={0.99}/>
+      {JSON.stringify(data)}
     </>;
   }
 };

@@ -35,7 +35,7 @@ export const ArticleCard = ({
     // Fix initial animation state
     const timeout = setTimeout(() => api.set(start), 0);
     return () => clearTimeout(timeout);
-  }, [api, start]);
+  }, [api]);
 
   return (
     <article className="h-96 w-96 rounded-xl bg-cover bg-center overflow-hidden shadow"

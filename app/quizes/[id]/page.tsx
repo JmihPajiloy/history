@@ -18,8 +18,7 @@ import { useQuiz } from "@/hooks";
 
 const Page = () => {
 
-  const searchParams = useSearchParams();
-  const { isError, isLoading, quiz, isQuestionValid } = useQuiz();
+  const { isError, isLoading, isQuestionValid } = useQuiz();
 
   if (isError || !isQuestionValid) {
     return <div>Error</div>;
