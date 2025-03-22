@@ -10,6 +10,9 @@ export const useFetchQuiz = (id: number | string) => {
     queryKey: ["quiz", id],
     queryFn: async () => {
       const quiz = await fetchQuiz(id);
+      if (quiz.is_completed) {
+        throw new Error("Вы не можете пройти квиз, так как уже проходили его ранее!")
+      }
       return quiz;
     }
   });
