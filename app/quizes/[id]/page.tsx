@@ -5,8 +5,6 @@ import { RadioCard, RadioGroup } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-import { useSearchParams } from "next/navigation";
-
 import { useQuiz } from "@/hooks";
 //
 // const Countdown = dynamic(() => import("@/components/countdown").then(mod => mod.Countdown), {
