@@ -1,10 +1,13 @@
+"use client";
+
 import {
   ArticleCard,
   ArticleCardButton,
-  ArticleCardDescription,
+  ArticleCardDescription, ArticleCardFallback,
   ArticleCardProvider,
   ArticleCardTitle
 } from "@/components/article-card";
+import { useFetchAllArticles } from "@/hooks/use-fetch-all-articles";
 
 const articles = [
   {
@@ -83,21 +86,33 @@ const articles = [
 
 
 export const Articles = () => {
+  const { isLoading, data, isSuccess } = useFetchAllArticles();
+
   return (
     <>
-      <h2 className="font-heading font-bold px-4 py-10 text-5xl scroll-mt-16"
+      <h2 className="font-heading font-extrabold px-4 py-10 text-5xl scroll-mt-16"
           id="articles">Статьи</h2>
       <div className="flex flex-wrap gap-4 justify-center">
-        {
-          articles.map(({ title, description, href, ...rest }, index) => (
-            <ArticleCardProvider key={index}>
-              <ArticleCard {...rest}>
-                <ArticleCardTitle>{title}</ArticleCardTitle>
-                <ArticleCardDescription>{description}</ArticleCardDescription>
-                <ArticleCardButton href={href}>Читать</ArticleCardButton>
-              </ArticleCard>
-            </ArticleCardProvider>
-          ))
+        {isLoading && <>
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+          <ArticleCardFallback />
+        </>}
+        {isSuccess && data.map((item, index) => (
+          <ArticleCardProvider key={index}>
+            <ArticleCard background={item.photo_url ?? "/img.png"}>
+              <ArticleCardTitle>{item.title}</ArticleCardTitle>
+              <ArticleCardDescription>{item.description}</ArticleCardDescription>
+              <ArticleCardButton href={`/articles/${item.id}`}>Читать</ArticleCardButton>
+            </ArticleCard>
+          </ArticleCardProvider>
+        ))
         }
       </div>
     </>

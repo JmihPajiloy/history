@@ -16,7 +16,9 @@ const config: Config = {
       mono: ["var(--font-mono)"]
     },
     extend: {
-
+      width: {
+        "128": "40rem", // Add your custom width
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
