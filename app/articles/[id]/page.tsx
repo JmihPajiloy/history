@@ -1,16 +1,23 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { fetchArticle } from "@/actions";
 import { redirect } from "next/navigation";
-import { AnchorHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from "react";
-import Image, { ImageProps } from "next/image";
+import type { AnchorHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from "react";
+import Image, { type ImageProps } from "next/image";
 import { Link as LinkIcon } from "lucide-react";
+import { BackToMain } from "@/components/back-to-main";
 
 type Props = { params: { id: string } }
 const Page = async ({ params: { id } }: Props) => {
   try {
-    const data = await fetchArticle(id);
-    if (!data.markdown) redirect("/404");
+    const [data, err] = await fetchArticle(id);
+    if (err || !data.markdown) redirect("/404");
     return (
+      <>
+        <div className="flex justify-between items-center">
+<BackToMain/>
+          {data?.author && <p className="italic text-muted-foreground text-sm">Автор: {data?.author}</p>}
+        </div>
+
       <MDXRemote source={data?.markdown} components={{
         h1: ({ children }: PropsWithChildren) => <h1
           className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pb-2 mt-8">{children}</h1>,
@@ -48,6 +55,8 @@ const Page = async ({ params: { id } }: Props) => {
           </a>
         )
       }} />
+        <BackToMain/>
+      </>
     );
   } catch {
     redirect("/404");
