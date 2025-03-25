@@ -5,7 +5,7 @@ import { fetchQuiz } from "@/actions";
 import { useParams, useSearchParams } from "next/navigation";
 
 
-export const useFetchQuiz = (id: number | string) => {
+export const useFetchQuiz = (id: string) => {
   return useQuery({
     queryKey: ["quiz", id],
     queryFn: async () => {
@@ -17,39 +17,25 @@ export const useFetchQuiz = (id: number | string) => {
         details: "Вы не можете пройти квиз, так как уже проходили его ранее!"
       };
       return quiz;
+
     },
     staleTime: 1000 * 60 * 5
   });
 };
 
 
-export const useQuiz = () => {
+export const useCurrentQuiz = () => {
   const { id } = useParams<{ id: string }>();
-  const searchParams = useSearchParams();
-  const question = searchParams.get("question");
-  const { data: quiz, isSuccess, ...rest } = useFetchQuiz(id);
-  const isQuestionValid = !(
-    !question
-    || isNaN(Number(question))
-    || Number(question) < 1
-    || (isSuccess && Number(question) > quiz.questions.length)
-  );
-  return {
-    ...rest,
-    quiz,
-    id,
-    isSuccess,
-    question: isQuestionValid ? {
-      ...quiz?.questions[Number(question) - 1],
-      order: Number(question),
-      chosenAnswer: quiz
-        ?.questions[Number(question) - 1]
-        .answers
-        ?.filter(x => x.is_chosen)
-        .at(0)
-        ?.id ?? ""
-    } : null
-  };
+  return useFetchQuiz(id);
 };
 
+export const useQuestion = (quiz: ReturnType<typeof useCurrentQuiz>) => {
+  const searchParams = useSearchParams();
+  const questionNumber = Number(searchParams.get("question"));
 
+  if (!questionNumber) return NaN;
+  if (!quiz.isSuccess) return NaN;
+  if (questionNumber > quiz.data.questions.length) return NaN;
+  if (questionNumber < 1) return NaN;
+  return questionNumber;
+};

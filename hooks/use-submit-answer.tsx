@@ -15,14 +15,12 @@ export const useSubmitAnswer = () => {
       return res;
     },
     onSuccess: async (quiz) => {
-      console.log(quiz);
-
+      queryClient.setQueryData(["quiz", quiz.id.toString()], quiz);
       await queryClient.invalidateQueries({ queryKey: ["quizes"] });
-      await queryClient.setQueryData(["quiz", quiz.id], () => quiz);
       if (quiz.is_completed) {
-        router.push("/")
+        router.push("/");
       }
-      },
+    },
     onError: async (error: ErrorResponse) => {
       if (error.type === "HttpError" && error.status) {
         toast.error(`Ошибка ${error.status}`, { description: error.details });

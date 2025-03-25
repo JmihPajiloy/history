@@ -8,12 +8,13 @@ import {
   PaginationNext,
   PaginationPrevious
 } from "@/components/ui/pagination";
-import { useQuiz } from "@/hooks";
+import { useCurrentQuiz, useQuestion } from "@/hooks";
 import type { QuestionResponse } from "@/actions";
 
 
 type IndicatorProps = QuestionResponse
 const Indicator = ({ answers = [], is_answered }: IndicatorProps) => {
+  console.log("rererererererrender")
   if (is_answered && answers.some(x => x.is_correct))
     return <div className="bg-success w-9 mt-1 h-2 shadow rounded-lg" />;
 
@@ -25,24 +26,25 @@ const Indicator = ({ answers = [], is_answered }: IndicatorProps) => {
 
 
 export const QuizPagination = () => {
-  const { question, quiz } = useQuiz();
-  if (!question) return null;
+  const quiz = useCurrentQuiz();
+  const question = useQuestion(quiz)
+  if (!question) return <></>;
   return (
     <Pagination>
       <PaginationContent className="flex items-start">
         <div className="size-9">
-          {question.order > 1 &&
+          {question > 1 &&
             <PaginationItem>
-              <PaginationPrevious href={`/quizes/${quiz?.id}?question=${question.order - 1}`} />
+              <PaginationPrevious href={`/quizes/${quiz.data?.id}?question=${question - 1}`} />
             </PaginationItem>
           }
         </div>
 
         {
-          quiz?.questions.map((q, i) => <PaginationItem key={i + 1}>
+          quiz.data?.questions.map((q, i) => <PaginationItem key={i + 1}>
             <PaginationLink
-              href={`/quizes/${quiz?.id}?question=${i + 1}`}
-              isActive={i + 1 === question.order}
+              href={`/quizes/${quiz.data?.id}?question=${i + 1}`}
+              isActive={i + 1 === question}
             >
               {i + 1}
             </PaginationLink>
@@ -50,13 +52,13 @@ export const QuizPagination = () => {
           </PaginationItem>)
         }
         <div className="size-9">
-          {quiz?.questions && (question.order + 1 <= quiz.questions.length) &&
+          {quiz.data?.questions && (question + 1 <= quiz.data.questions.length) &&
             <PaginationItem>
-              <PaginationNext href={`/quizes/${quiz?.id}?question=${question.order + 1}`} />
+              <PaginationNext href={`/quizes/${quiz.data?.id}?question=${question + 1}`} />
             </PaginationItem>
           }
         </div>
       </PaginationContent>
     </Pagination>
-);
+  );
 };
