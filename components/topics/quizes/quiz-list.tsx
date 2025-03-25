@@ -24,9 +24,7 @@ export const QuizList = () => {
   }
   if (isSuccess) {
     return <>
-      <QuizCard is_completed/>
-      <QuizCard progress={0.99}/>
-      {JSON.stringify(data)}
+      {data.map(quiz => <QuizCard key={quiz.id} {...quiz} />)}
     </>;
   }
 };

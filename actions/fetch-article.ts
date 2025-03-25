@@ -1,18 +1,21 @@
 "use server";
 
-import { api } from "@/actions/utils";
-import type { ArticleResponse } from "@/actions/schemas";
+import { api, tryCatch } from "@/actions/utils";
+import type { ArticleByIDResponse } from "@/actions/types";
 import axios from "axios";
 
-type FetchArticleResponse = ArticleResponse & {
+type FetchArticleResponse = ArticleByIDResponse & {
   markdown?: string;
 }
 
-export async function fetchArticle(articleID: string): Promise<FetchArticleResponse> {
-  const response = await api.get<ArticleResponse>(`/article/${articleID}`);
+export const fetchArticle = (articleID: string) => tryCatch<FetchArticleResponse>(async () => {
+  const response = await api.get<ArticleByIDResponse>(`/article/${articleID}`);
   if (!response.data.content_url) {
     return response.data;
   }
   const markdown = await axios.get(response.data.content_url);
-  return { ...response.data, markdown: markdown.data };
-}
+  return {
+    ...response.data,
+    markdown: markdown.data
+  };
+});

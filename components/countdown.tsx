@@ -29,7 +29,7 @@ const CountdownDigit = ({ value }: CountdownDigitProps) => {
     from: { opacity: 0, transform: "translate3d(0,150%,0)", position: "absolute" } satisfies TransitionState,
     enter: { opacity: 1, transform: "translate3d(0,0%,0)", position: "relative" } satisfies TransitionState,
     leave: { opacity: 0, transform: "translate3d(0,-150%,0)", position: "absolute" } satisfies TransitionState,
-    config: config.wobbly
+    config: config.wobbly,
   });
 
   useEffect(() => {

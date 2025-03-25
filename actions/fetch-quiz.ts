@@ -1,13 +1,14 @@
 "use server";
 
-import { api, getEmail, type QuizResponse } from "@/actions/utils";
+import { api, getEmail, tryCatch } from "@/actions/utils";
+import type { QuizByIDResponse } from "@/actions/types";
 
-export const fetchQuiz = async (quizID: string | number): Promise<QuizResponse> => {
+export const fetchQuiz = (quizID: string | number) => tryCatch(async () => {
   const email = await getEmail();
-  const response = await api.get<QuizResponse>(`/quiz/${quizID}`, {
+  const response = await api.get<QuizByIDResponse>(`/quiz/${quizID}`, {
     headers: {
       "Authorization": email
     }
   });
   return response.data;
-};
+});

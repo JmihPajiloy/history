@@ -9,12 +9,16 @@ export const useFetchQuiz = (id: number | string) => {
   return useQuery({
     queryKey: ["quiz", id],
     queryFn: async () => {
-      const quiz = await fetchQuiz(id);
-      if (quiz.is_completed) {
-        throw new Error("Вы не можете пройти квиз, так как уже проходили его ранее!")
-      }
+      const [quiz, err] = await fetchQuiz(id);
+      if (err) throw err;
+      if (quiz.is_completed) throw {
+        type: "QuizAccessError",
+        title: "Вам сюда нельзя!",
+        details: "Вы не можете пройти квиз, так как уже проходили его ранее!"
+      };
       return quiz;
-    }
+    },
+    staleTime: 1000 * 60 * 5
   });
 };
 
@@ -24,14 +28,27 @@ export const useQuiz = () => {
   const searchParams = useSearchParams();
   const question = searchParams.get("question");
   const { data: quiz, isSuccess, ...rest } = useFetchQuiz(id);
-  const isQuestionValid = (
+  const isQuestionValid = !(
     !question
     || isNaN(Number(question))
     || Number(question) < 1
     || (isSuccess && Number(question) > quiz.questions.length)
   );
   return {
-    ...rest, quiz, id, isQuestionValid, isSuccess, question
+    ...rest,
+    quiz,
+    id,
+    isSuccess,
+    question: isQuestionValid ? {
+      ...quiz?.questions[Number(question) - 1],
+      order: Number(question),
+      chosenAnswer: quiz
+        ?.questions[Number(question) - 1]
+        .answers
+        ?.filter(x => x.is_chosen)
+        .at(0)
+        ?.id ?? ""
+    } : null
   };
 };
 

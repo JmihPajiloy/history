@@ -3,6 +3,4 @@
 
 import { signIn } from "@/auth";
 
-export async function login() {
-  return await signIn("vk");
-}
+export const login = () => signIn("vk");
