@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { QuizByIDResponse } from "@/actions/utils";
+import type { QuizByIDResponse } from "@/actions";
 import Link from "next/link";
 
 export const QuizCardSkeleton = () => {
