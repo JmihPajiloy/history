@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { animated, config, useSpring } from "@react-spring/web";
 
 
-export const BackToMain = ({ className }: { className: string }) => {
+export const BackToMain = ({ className }: { className?: string }) => {
   const [styles, api] = useSpring(() => ({
     from: { x: 0 },
     config: config.wobbly
