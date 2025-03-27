@@ -10,7 +10,7 @@ import { animated, config, useSpring } from "@react-spring/web";
 export const BackToMain = ({ className }: { className?: string }) => {
   const [styles, api] = useSpring(() => ({
     from: { x: 0 },
-    config: config.wobbly
+    config: { tension: 300, friction: 10 }
   }));
 
   return (
