@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,28 +12,7 @@ import { StatsResponse } from "@/actions";
 const chartConfig = {
   count: {
     label: "Ответы",
-    color: "hsl(var(--chart-2))"
   },
-  A: {
-    label: "A",
-    color: "hsl(var(--chart-1))"
-  },
-  B: {
-    label: "B",
-    color: "hsl(var(--chart-2))"
-  },
-  firefox: {
-    label: "Firefox",
-    color: "hsl(var(--chart-3))"
-  },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))"
-  },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))"
-  }
 } satisfies ChartConfig;
 
 
@@ -52,7 +30,6 @@ const GlobalStatsChart = ({ data }: { data: StatsResponse["questions"][number] }
             accessibilityLayer
             data={data.answers.map((ans, i) => ({ ...ans, fill: `hsl(var(--chart-${(i % 5) + 1}))` }))}
             layout="vertical"
-
             margin={{
               left: 0
             }}
@@ -82,12 +59,8 @@ const GlobalStatsChart = ({ data }: { data: StatsResponse["questions"][number] }
         <div className="flex gap-2 font-medium leading-none">
           С этим вопросом справилось {correctPercent}% пользователей
         </div>
-        {/*<div className="leading-none text-muted-foreground">*/}
-        {/*  Showing total visitors for the last 6 months*/}
-        {/*</div>*/}
       </CardFooter>
     </Card>
-
   );
 };
 

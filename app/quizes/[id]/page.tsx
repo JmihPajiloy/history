@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 
 import { useCurrentQuiz, useFetchQuiz, useQuestion, useSubmitAnswer } from "@/hooks";
 import { toast } from "sonner";
-import { ChartColumnBig, CircleOff, DoorClosed, ShieldAlert } from "lucide-react";
+import { ChartColumnBig, CircleOff, ShieldAlert } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { QuizPagination } from "@/components/quiz/quiz-pagination";
 import { QuizSkeleton } from "@/components/quiz/quiz-skeleton";
 import { ErrorCard } from "@/components/error-card";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const QuizForm = () => {
