@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { CircleAlert, RotateCcw, Undo2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
-import { toast } from "sonner";
 
 type Props = {
   error: Error & { digest?: string };
