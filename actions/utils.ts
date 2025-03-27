@@ -35,7 +35,8 @@ export const handleError = (error: unknown): ErrorResponse => {
     return {
       type: "HttpError",
       status: error.response.status,
-      details: error.response.data?.detail ?? error.response.statusText
+      title: `Ошибка ${error.response.status}`,
+      details: typeof error.response.data?.detail === "string" ? error.response.data?.detail : error.response.statusText
     };
   } else if (error instanceof Error) {
     return { type: error.name, details: error.message };

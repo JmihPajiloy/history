@@ -3,10 +3,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ErrorResponse, submitAnswer } from "@/actions";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 export const useSubmitAnswer = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (answerID: string | number) => {
@@ -17,9 +15,6 @@ export const useSubmitAnswer = () => {
     onSuccess: async (quiz) => {
       queryClient.setQueryData(["quiz", quiz.id.toString()], quiz);
       await queryClient.invalidateQueries({ queryKey: ["quizes"] });
-      if (quiz.is_completed) {
-        router.push("/");
-      }
     },
     onError: async (error: ErrorResponse) => {
       if (error.type === "HttpError" && error.status) {

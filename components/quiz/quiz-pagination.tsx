@@ -9,16 +9,18 @@ import {
   PaginationPrevious
 } from "@/components/ui/pagination";
 import { useCurrentQuiz, useQuestion } from "@/hooks";
-import type { QuestionResponse } from "@/actions";
+import type { AnswerResponse } from "@/actions";
 
 
-type IndicatorProps = QuestionResponse
-const Indicator = ({ answers = [], is_answered }: IndicatorProps) => {
-  console.log("rererererererrender")
-  if (is_answered && answers.some(x => x.is_correct))
+type IndicatorProps = {
+  answers?: AnswerResponse[];
+  is_answered?: boolean;
+}
+const Indicator = ({ answers = [], is_answered = false }: IndicatorProps) => {
+  if (is_answered && answers.some(x => x.is_correct && x.is_chosen))
     return <div className="bg-success w-9 mt-1 h-2 shadow rounded-lg" />;
 
-  if (is_answered && answers?.every(x => x.is_correct == false))
+  if (is_answered && answers?.some(x => x.is_chosen && !x.is_correct))
     return <div className="bg-destructive w-9 mt-1 h-2 shadow rounded-lg" />;
 
   return <div className="bg-primary w-9 mt-1 h-2 shadow rounded-lg" />;
@@ -31,7 +33,7 @@ export const QuizPagination = () => {
   if (!question) return <></>;
   return (
     <Pagination>
-      <PaginationContent className="flex items-start">
+      <PaginationContent className="flex items-start pb-8">
         <div className="size-9">
           {question > 1 &&
             <PaginationItem>
