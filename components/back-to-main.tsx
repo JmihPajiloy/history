@@ -23,7 +23,7 @@ export const BackToMain = ({ className }: { className: string }) => {
       })}>
         <Link href="/">
           <animated.div style={styles}>
-            <ArrowLeft className="mr-1" />
+            <ArrowLeft className="mr-1 size-4" />
           </animated.div>
           На главную
         </Link>
