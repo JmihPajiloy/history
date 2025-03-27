@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { animated, config, useSpring } from "@react-spring/web";
+import { animated, useSpring } from "@react-spring/web";
 
 
 export const BackToMain = ({ className }: { className?: string }) => {
