@@ -13,6 +13,19 @@ export type ErrorResponse = HttpError | {
   status?: undefined
 }
 
+export type StatsResponse = {
+  questions: {
+    question_id: number
+    question_title: string;
+    correct_answers: number;
+    incorrect_answers: number;
+    answers: {
+      id: number
+      title: string;
+      count: number
+    }[]
+  }[]
+}
 
 
 export type AnswerResponse = {
