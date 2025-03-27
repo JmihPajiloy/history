@@ -11,13 +11,7 @@ export const useFetchQuiz = (id: string) => {
     queryFn: async () => {
       const [quiz, err] = await fetchQuiz(id);
       if (err) throw err;
-      if (quiz.is_completed) throw {
-        type: "QuizAccessError",
-        title: "Вам сюда нельзя!",
-        details: "Вы не можете пройти квиз, так как уже проходили его ранее!"
-      };
       return quiz;
-
     },
     staleTime: 1000 * 60 * 5
   });
