@@ -30,8 +30,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <hr className="my-2" />,
     a: ({ children, href = "" }: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => (
       <a href={href}
-         className="text-muted-foreground bg-muted font-medium w-fit px-2 py-0.5 rounded-md hover:opacity-70 font-sans underline-offset-4 hover:underline flex items-center">
-        <LinkIcon className="mr-2 h-4 w-4" />
+         className="text-muted-foreground bg-muted font-medium w-fit px-2 py-0.5 rounded-md hover:opacity-70 font-sans underline-offset-4 hover:underline inline-block ">
+        <LinkIcon className="mr-2 h-4 w-4 shrink-0" />
         {children}
       </a>
     ),

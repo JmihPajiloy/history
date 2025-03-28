@@ -29,16 +29,17 @@ export function useBoop({
          scale(1)`,
     config
   });
+
   useEffect(() => {
     if (!isBooped) {
       return;
     }
-    const timeoutId = window.setTimeout(
-      () => setIsBooped(false),
-      duration
-    );
+
+    const timeoutId = window.setTimeout(() => setIsBooped(false), duration);
+
     return () => window.clearTimeout(timeoutId);
   }, [isBooped]);
+
   const trigger = useCallback(() => setIsBooped(true), []);
   const appliedStyle = prefersReducedMotion ? {} : style;
   return [appliedStyle, trigger];

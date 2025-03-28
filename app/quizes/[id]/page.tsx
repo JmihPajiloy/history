@@ -77,7 +77,6 @@ const Page = () => {
 
   const quiz = useCurrentQuiz();
   const question = useQuestion(quiz);
-  console.log(quiz.status, quiz.error);
 
   if (quiz.isError) {
     return (

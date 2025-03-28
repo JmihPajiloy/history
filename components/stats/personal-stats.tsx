@@ -3,8 +3,7 @@
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 import { useFetchQuiz } from "@/hooks";
-import { useParams } from "next/navigation";
-import { ErrorCard } from "@/components/error-card";
+import { notFound, useParams } from "next/navigation";
 import type { QuizByIDResponse } from "@/actions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "../ui/skeleton";
@@ -17,13 +16,13 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const PersonalStatsChart = ({ data }: { data: QuizByIDResponse }) => {
-  const completed = data?.questions
+  const completed = data.questions
     .filter(q => q.answers.some(a => a.is_correct && a.is_chosen))
     .length;
-  const all = data?.questions.length;
+  const all = data.questions.length;
   const chartData = [
     {
-      completed: completed && all ? completed / all : 0,
+      completed: completed / all,
       fill: "hsl(var(--chart-2))"
     }
   ];
@@ -113,24 +112,28 @@ const PersonalStatsChartSkeleton = () => {
 
 export const PersonalStats = () => {
   const { id } = useParams<{ id: string }>();
-  const { data, isSuccess, isError, error, isLoading } = useFetchQuiz(id);
+  const { data, isSuccess, isError, isLoading } = useFetchQuiz(id);
 
-  if (isError) return <ErrorCard error={error}>
-    {error.title}
-  </ErrorCard>;
+  if (isError) notFound()
   if (isLoading) return (
-    <PersonalStatsChartSkeleton/>
-  )
+    <div className="flex justify-between sm:flex-row flex-col">
+      <div className="flex flex-col gap-2 pb-2">
+        <h1 className="font-extrabold text-4xl">
+          <Skeleton className="w-fit">Фото-квиз</Skeleton>
+        </h1>
+        <Skeleton className="w-fit">Описание длинное очень... Вот такое</Skeleton>
+      </div>
+      <PersonalStatsChartSkeleton />
+    </div>
+  );
 
   if (isSuccess) return (
-    <div className="flex justify-between md:flex-row flex-col">
+    <div className="flex justify-between sm:flex-row flex-col">
       <div className="flex flex-col gap-2 pb-2">
         <h1 className="font-extrabold text-4xl">{data.title}</h1>
         <p>{data.description}</p>
       </div>
-
       <PersonalStatsChart data={data} />
-
     </div>
   );
 };

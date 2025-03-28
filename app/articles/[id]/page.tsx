@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { fetchArticle } from "@/actions";
-import { redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import type { AnchorHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from "react";
 import Image, { type ImageProps } from "next/image";
 import { Link as LinkIcon } from "lucide-react";
@@ -9,15 +9,15 @@ import { BackToMainButton } from "@/components/back-to-main-button";
 type Props = { params: { id: string } }
 const Page = async ({ params: { id } }: Props) => {
   try {
+    if (isNaN(Number(id))) notFound();
     const [data, err] = await fetchArticle(id);
-    if (err || !data.markdown) redirect("/404");
+    if (err || !data.markdown) notFound();
     return (
       <div className="max-w-[48rem] mx-4 gap-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mb-4">
           <BackToMainButton />
           {data?.author && <p className="italic text-muted-foreground text-sm">Автор: {data?.author}</p>}
         </div>
-
         <MDXRemote source={data?.markdown} components={{
           h1: ({ children }: PropsWithChildren) => <h1
             className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl pb-2 mt-8">{children}</h1>,
@@ -53,17 +53,17 @@ const Page = async ({ params: { id } }: Props) => {
                 href = ""
               }: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => (
             <a href={href}
-               className="text-muted-foreground bg-muted font-medium w-fit px-2 py-0.5 rounded-md hover:opacity-50 transition duration-200 font-sans underline-offset-4 hover:underline flex items-center">
-              <LinkIcon className="mr-2 h-4 w-4" />
-              {children}
+               className="text-muted-foreground bg-muted font-medium w-fit px-2 py-0.5 rounded-md hover:opacity-50 translate-y-[0.1875rem] transition duration-200 font-sans underline-offset-4 hover:underline inline-flex items-center">
+              <LinkIcon className="mr-2 h-4 w-4 shrink-0" />
+              {children || new URL(href).hostname}
             </a>
           )
         }} />
-        <BackToMainButton />
+        <BackToMainButton className="mt-4" />
       </div>
     );
   } catch {
-    redirect("/404");
+    notFound()
   }
 };
 

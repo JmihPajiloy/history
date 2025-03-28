@@ -1,6 +1,7 @@
 "use client";
 
 import { BackToMainButton } from "@/components/back-to-main-button";
+import { ShakingContainer } from "@/components/shaking-container";
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { useBoop } from "@/hooks";
 import { cn } from "@/lib/utils";
@@ -40,7 +41,10 @@ export default function Error({ error, reset }: Props) {
 
   return (
     <main className="flex grow mx-auto flex-col items-center justify-center gap-2 w-56">
-      <CircleAlert className="size-20 mb-4" />
+     <ShakingContainer className="mb-4">
+
+       <CircleAlert className="size-20" />
+     </ShakingContainer>
       <h2 className="text-center font-semibold text-xl">Что-то пошло не так!</h2>
       <RetryButton onClick={() => reset()} />
       <BackToMainButton className="w-full" />

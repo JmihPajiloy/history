@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "historyitmo.hb.ru-msk.vkcloud-storage.ru",
+        hostname: "*",
         port: "",
         pathname: "/**",
         search: ""
