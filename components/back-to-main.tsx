@@ -4,13 +4,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { animated, useSpring } from "@react-spring/web";
+import { animated, useSpring, config } from "@react-spring/web";
 
 
 export const BackToMain = ({ className }: { className?: string }) => {
   const [styles, api] = useSpring(() => ({
     from: { x: 0 },
-    config: { tension: 300, friction: 10 }
+    config: config.default,
+    delay: 0
   }));
 
   return (
