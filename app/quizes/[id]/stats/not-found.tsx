@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { CircleAlert, CircleSlash2 } from "lucide-react";
+import { CircleSlash2 } from "lucide-react";
 import { BackToMainButton } from "@/components/back-to-main-button";
 
 export const metadata: Metadata = {
