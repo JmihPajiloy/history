@@ -7,7 +7,7 @@ import {
   ArticleCardProvider,
   ArticleCardTitle
 } from "@/components/article-card";
-import { useFetchAllArticles } from "@/hooks/use-fetch-all-articles";
+import { useFetchAllArticles } from "@/hooks";
 
 export const Articles = () => {
   const { isLoading, data, isSuccess } = useFetchAllArticles();

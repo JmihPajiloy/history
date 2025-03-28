@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import type { AnchorHTMLAttributes, DetailedHTMLProps, PropsWithChildren } from "react";
 import Image, { type ImageProps } from "next/image";
 import { Link as LinkIcon } from "lucide-react";
-import { BackToMain } from "@/components/back-to-main";
+import { BackToMainButton } from "@/components/back-to-main-button";
 
 type Props = { params: { id: string } }
 const Page = async ({ params: { id } }: Props) => {
@@ -14,7 +14,7 @@ const Page = async ({ params: { id } }: Props) => {
     return (
       <div className="max-w-[48rem] mx-4 gap-4">
         <div className="flex justify-between items-center">
-          <BackToMain />
+          <BackToMainButton />
           {data?.author && <p className="italic text-muted-foreground text-sm">Автор: {data?.author}</p>}
         </div>
 
@@ -59,7 +59,7 @@ const Page = async ({ params: { id } }: Props) => {
             </a>
           )
         }} />
-        <BackToMain />
+        <BackToMainButton />
       </div>
     );
   } catch {

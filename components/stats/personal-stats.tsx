@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { ErrorCard } from "@/components/error-card";
 import type { QuizByIDResponse } from "@/actions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "../ui/skeleton";
 
 const chartConfig = {
   completed: {
@@ -16,19 +17,19 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const PersonalStatsChart = ({ data }: { data: QuizByIDResponse }) => {
-  const completed = data.questions
+  const completed = data?.questions
     .filter(q => q.answers.some(a => a.is_correct && a.is_chosen))
     .length;
-  const all = data.questions.length;
+  const all = data?.questions.length;
   const chartData = [
     {
-      completed: completed / all,
+      completed: completed && all ? completed / all : 0,
       fill: "hsl(var(--chart-2))"
     }
   ];
 
   return (
-    <Card className="w-60 shrink-0">
+    <Card className="w-60 h-80 shrink-0">
       <CardHeader className="border-b mb-5">
         <CardTitle>Ваш результат</CardTitle>
         <CardDescription>{completed}/{all} верных ответов</CardDescription>
@@ -91,18 +92,40 @@ const PersonalStatsChart = ({ data }: { data: QuizByIDResponse }) => {
   );
 };
 
+const PersonalStatsChartSkeleton = () => {
+  return (
+    <Card className="w-60 h-80 shrink-0">
+      <CardHeader className="border-b mb-5">
+        <CardTitle>
+          <Skeleton className="w-fit"> Ваш результат</Skeleton>
+        </CardTitle>
+        <CardDescription>
+          <Skeleton className="w-fit">000/000 верных ответов</Skeleton>
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="m-auto size-40 rounded-full" />
+      </CardContent>
+    </Card>
+  );
+};
+
 
 export const PersonalStats = () => {
   const { id } = useParams<{ id: string }>();
-  const { data, isSuccess, isError, error } = useFetchQuiz(id);
+  const { data, isSuccess, isError, error, isLoading } = useFetchQuiz(id);
 
   if (isError) return <ErrorCard error={error}>
     {error.title}
   </ErrorCard>;
+  if (isLoading) return (
+    <PersonalStatsChartSkeleton/>
+  )
+
   if (isSuccess) return (
     <div className="flex justify-between md:flex-row flex-col">
-      <div>
-        <h1 className="font-extrabold text-4xl ">{data.title}</h1>
+      <div className="flex flex-col gap-2 pb-2">
+        <h1 className="font-extrabold text-4xl">{data.title}</h1>
         <p>{data.description}</p>
       </div>
 

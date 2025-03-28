@@ -1,9 +1,33 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { CircleAlert, RotateCcw, Undo2 } from "lucide-react";
-import Link from "next/link";
+import { BackToMainButton } from "@/components/back-to-main-button";
+import { Button, type ButtonProps } from "@/components/ui/button";
+import { useBoop } from "@/hooks";
+import { cn } from "@/lib/utils";
+import { animated } from "@react-spring/web";
+import { CircleAlert, RotateCcw } from "lucide-react";
 import { useEffect } from "react";
+
+
+const RetryButton = ({
+                       onClick,
+                       className,
+                       variant = "outline",
+                       ...rest
+                     }: Omit<ButtonProps, "onMouseEnter" | "asChild" | "children">) => {
+  const [style, trigger] = useBoop({
+    rotate: -15
+  });
+  return (
+    <Button variant={variant} onMouseEnter={() => trigger()} className={cn("w-full", className)}
+            onClick={onClick} {...rest}>
+      <animated.div style={style} className="mr-2">
+        <RotateCcw className="size-4" />
+      </animated.div>
+      Повторить
+    </Button>
+  );
+};
 
 type Props = {
   error: Error & { digest?: string };
@@ -18,14 +42,8 @@ export default function Error({ error, reset }: Props) {
     <main className="flex grow mx-auto flex-col items-center justify-center gap-2 w-56">
       <CircleAlert className="size-20 mb-4" />
       <h2 className="text-center font-semibold text-xl">Что-то пошло не так!</h2>
-      <Button variant="outline" className="w-full" onClick={() => reset()}>
-        Попробовать еще раз <RotateCcw className="ml-2 size-4 " />
-      </Button>
-      <Button className="w-full group" asChild>
-        <Link href="/">
-          Вернуться на главную <Undo2 className="ml-2 size-4" />
-        </Link>
-      </Button>
+      <RetryButton onClick={() => reset()} />
+      <BackToMainButton className="w-full" />
     </main>
   );
 }

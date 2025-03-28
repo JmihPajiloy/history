@@ -20,7 +20,7 @@ const GlobalStatsChart = ({ data }: { data: StatsResponse["questions"][number] }
   const correctPercent = (data.correct_answers / (data.correct_answers + data.incorrect_answers) * 100).toFixed(1).replace(".0", "").replace(".", ",");
 
   return (
-    <Card className="w-80">
+    <Card className="sm:w-80 w-full">
       <CardHeader>
         <CardTitle>{data.question_title}</CardTitle>
       </CardHeader>
@@ -70,8 +70,8 @@ export function GlobalStats() {
 
   return (
     <div>
-      <h2 className="font-bold text-3xl mb-5">Статистика ответов других пользователей</h2>
-      <div className="grid gap-2 md:grid-cols-2 grid-cols-1 w-fit">
+      <h2 className="font-bold text-3xl pb-5">Статистика ответов других пользователей</h2>
+      <div className="grid gap-2 md:grid-cols-2 grid-cols-1 w-full md:w-fit">
         {
           data?.questions.map((question) => <GlobalStatsChart key={question.question_id} data={question} />)
         }

@@ -54,5 +54,5 @@ export const getEmail = async () => {
     console.error("Не удается получить доступ к email пользователя: ", creds?.user);
     throw new AuthorizationError("Не удается получить доступ к email пользователя");
   }
-  return creds.user.email;
+  return creds.user.email + "@@@@@@";
 };

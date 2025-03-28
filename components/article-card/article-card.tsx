@@ -12,7 +12,7 @@ type Props = {
 
 export const ArticleCard = ({
                               children,
-                              background = "/img.png",
+                              background = "/article-preview-fallback.png",
                               dummyHeight = 160
                             }: PropsWithChildren<Props>) => {
   const [cardRef] = useArticleCard();

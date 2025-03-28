@@ -14,7 +14,6 @@ export const fetchArticle = (articleID: string) => tryCatch<FetchArticleResponse
     return response.data;
   }
   const markdown = await axios.get(response.data.content_url);
-  console.log(markdown.data);
 
   return {
     ...response.data,

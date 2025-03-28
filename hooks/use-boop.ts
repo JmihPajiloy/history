@@ -1,42 +1,45 @@
 import { type SpringValue, useReducedMotion, useSpring } from "@react-spring/web";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-type UseBoopReturn = [
+export type UseBoopReturn = [
   { transform?: SpringValue<string> },
   () => void
 ]
 
-export const useBoop = ({
+export function useBoop({
                           x = 0,
                           y = 0,
-                          rotation = 0,
+                          rotate = 0,
                           scale = 1,
-                          timing = 150,
-                          config = { tension: 300, friction: 10 }
-                        }): UseBoopReturn => {
+                          duration = 150,
+                          config = {
+                            tension: 300,
+                            friction: 10
+                          }
+                        }): UseBoopReturn {
   const prefersReducedMotion = useReducedMotion();
-  const [style, api] = useSpring(() => ({
-    transform: "translate(0px, 0px) rotate(0deg) scale(1)",
+  const [isBooped, setIsBooped] = useState(false);
+  const style = useSpring({
+    transform: isBooped
+      ? `translate(${x}px, ${y}px)
+         rotate(${rotate}deg)
+         scale(${scale})`
+      : `translate(0px, 0px)
+         rotate(0deg)
+         scale(1)`,
     config
-  }));
-
-  const trigger = useCallback(() => {
-    if (prefersReducedMotion) return;
-
-    api.start({
-      transform: `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(${scale})`,
-      config: {
-        ...config,
-        duration: timing
-      },
-      onRest: () => {
-        api.start({
-          transform: "translate(0px, 0px) rotate(0deg) scale(1)"
-        });
-      }
-    });
-  }, [x, y, rotation, scale, timing, config, prefersReducedMotion, api]);
-
+  });
+  useEffect(() => {
+    if (!isBooped) {
+      return;
+    }
+    const timeoutId = window.setTimeout(
+      () => setIsBooped(false),
+      duration
+    );
+    return () => window.clearTimeout(timeoutId);
+  }, [isBooped]);
+  const trigger = useCallback(() => setIsBooped(true), []);
   const appliedStyle = prefersReducedMotion ? {} : style;
   return [appliedStyle, trigger];
-};
+}
