@@ -3,17 +3,17 @@
 import { auth } from "@/auth";
 import { Authorization } from "@/components/topics/quizes/authorization";
 import { QuizList } from "@/components/topics/quizes/quiz-list";
-import React from "react";
 
 
 export const Quizes = async () => {
   const session = await auth();
   return (
-    <section className="flex flex-col gap-4 items-center text-accent-foreground relative overflow-hidden rounded-t-3xl mt-10 p-10 min-h-96">
+    <section
+      className="flex flex-col gap-4 items-center text-accent-foreground relative overflow-hidden rounded-t-3xl mt-10 p-10 min-h-96">
       <h2 className="font-bold pt-10 px-4 font-heading text-5xl scroll-mt-14"
           id="quizes">Квизы</h2>
       {
-        !(session && session.user?.email) ? <Authorization /> : <QuizList/>
+        !(session && session.user?.email) ? <Authorization /> : <QuizList />
       }
 
     </section>

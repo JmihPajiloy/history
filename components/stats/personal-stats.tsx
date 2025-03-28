@@ -6,7 +6,7 @@ import { useFetchQuiz } from "@/hooks";
 import { useParams } from "next/navigation";
 import { ErrorCard } from "@/components/error-card";
 import type { QuizByIDResponse } from "@/actions";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const chartConfig = {
   completed: {
@@ -100,7 +100,7 @@ export const PersonalStats = () => {
     {error.title}
   </ErrorCard>;
   if (isSuccess) return (
-    <div className="flex justify-between">
+    <div className="flex justify-between md:flex-row flex-col">
       <div>
         <h1 className="font-extrabold text-4xl ">{data.title}</h1>
         <p>{data.description}</p>
