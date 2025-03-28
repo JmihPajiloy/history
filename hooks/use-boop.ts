@@ -12,12 +12,12 @@ export const useBoop = ({
                           rotation = 0,
                           scale = 1,
                           timing = 150,
-                          springConfig = { tension: 300, friction: 10 }
+                          config = { tension: 300, friction: 10 }
                         }): UseBoopReturn => {
   const prefersReducedMotion = useReducedMotion();
   const [style, api] = useSpring(() => ({
     transform: "translate(0px, 0px) rotate(0deg) scale(1)",
-    config: springConfig
+    config
   }));
 
   const trigger = useCallback(() => {
@@ -26,7 +26,7 @@ export const useBoop = ({
     api.start({
       transform: `translate(${x}px, ${y}px) rotate(${rotation}deg) scale(${scale})`,
       config: {
-        ...springConfig,
+        ...config,
         duration: timing
       },
       onRest: () => {
@@ -35,7 +35,7 @@ export const useBoop = ({
         });
       }
     });
-  }, [x, y, rotation, scale, timing, springConfig, prefersReducedMotion, api]);
+  }, [x, y, rotation, scale, timing, config, prefersReducedMotion, api]);
 
   const appliedStyle = prefersReducedMotion ? {} : style;
   return [appliedStyle, trigger];

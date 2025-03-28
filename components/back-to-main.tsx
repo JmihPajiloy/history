@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { animated } from "@react-spring/web";
+import { animated, config } from "@react-spring/web";
 import React from "react";
 import { useBoop } from "@/hooks";
 
 
 export const BackToMain = ({ className }: { className?: string }) => {
   const [styles, trigger] = useBoop({
-    x: -5
+    x: -5, config: config.wobbly
   });
 
   return (
