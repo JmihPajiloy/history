@@ -14,7 +14,7 @@ export const QuizItemSkeleton = () => {
         <Skeleton className="w-fit">Строительство малоэтажек в послевоенном Ленинграде</Skeleton>
       </TableCell>
       <TableCell className="text-center">
-        <Skeleton className="w-fit">Пройден</Skeleton>
+        <Skeleton className="w-fit inline">Пройден</Skeleton>
       </TableCell>
       <TableCell className="flex justify-center">
         <Skeleton className="sm:w-28 w-9 h-9 shrink-0" />
