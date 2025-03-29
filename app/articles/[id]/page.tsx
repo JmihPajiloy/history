@@ -42,7 +42,7 @@ const Page = async ({ params: { id } }: Props) => {
           ),
           blockquote: ({ children }: PropsWithChildren) => (
             <blockquote
-              className="mt-6 bg-muted/50 text-foreground border rounded-lg flex items-center justify-center px-4 py-3 italic [&_p]:leading-relaxed"
+              className="mt-6 bg-muted/50 text-foreground border rounded-lg flex flex-col gap-2 items-center justify-center px-4 py-3 italic [&_p]:leading-relaxed"
             >
               {children}
             </blockquote>
