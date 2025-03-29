@@ -1,7 +1,7 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ChartLine, Play } from "lucide-react";
+import { ChartColumnBig, Play } from "lucide-react";
 import type { QuizByIDResponse } from "@/actions";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -17,13 +17,13 @@ export const QuizItemSkeleton = () => {
         <Skeleton className="w-fit">Пройден</Skeleton>
       </TableCell>
       <TableCell className="flex justify-center">
-        <Skeleton className="sm:w-28 w-9 h-9 shrink-0"/>
+        <Skeleton className="sm:w-28 w-9 h-9 shrink-0" />
       </TableCell>
     </TableRow>
-  )
-}
+  );
+};
 
-export const QuizItem = ({id, title, is_completed}: Props) => {
+export const QuizItem = ({ id, title, is_completed }: Props) => {
   return (
     <TableRow>
       <TableCell className="font-medium">
@@ -38,7 +38,7 @@ export const QuizItem = ({id, title, is_completed}: Props) => {
             is_completed
               ? <Link href={`/quizes/${id}/stats`}>
                 <span className="sm:not-sr-only sr-only">Статистика</span>
-                <ChartLine className="sm:sr-only not-sr-only size-4" />
+                <ChartColumnBig className="sm:sr-only not-sr-only size-4" />
               </Link>
               : <Link href={`/quizes/${id}?question=1`}>
                 <span className="sm:not-sr-only sr-only">Пройти</span>
@@ -48,5 +48,5 @@ export const QuizItem = ({id, title, is_completed}: Props) => {
         </Button>
       </TableCell>
     </TableRow>
-  )
-}
+  );
+};
