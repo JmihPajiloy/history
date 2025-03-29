@@ -17,7 +17,7 @@ const config: Config = {
     },
     extend: {
       width: {
-        "128": "40rem", // Add your custom width
+        "128": "40rem",
       },
       colors: {
         background: "hsl(var(--background))",
