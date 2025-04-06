@@ -18,7 +18,7 @@ export default function Page() {
           </AspectRatio>
         </div>
         <h1 className="font-extrabold font-heading lg:text-left text-center text-foreground text-6xl">
-          Ленинград после победы
+          Ленинград. После победы
         </h1>
       </div>
       <Articles />
