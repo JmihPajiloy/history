@@ -21,7 +21,7 @@ const mono = localFont({
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
-  title: "Ленинград после победы",
+  title: "Ленинград. После победы",
   description: "Проект по истории"
 };
 
