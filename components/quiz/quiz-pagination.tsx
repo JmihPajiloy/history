@@ -8,8 +8,9 @@ import {
   PaginationNext,
   PaginationPrevious
 } from "@/components/ui/pagination";
-import { useCurrentQuiz, useQuestion } from "@/hooks";
+import { useFetchQuiz, useQuestion } from "@/hooks";
 import type { AnswerResponse } from "@/actions";
+import { useParams } from "next/navigation";
 
 
 type IndicatorProps = {
@@ -28,8 +29,9 @@ const Indicator = ({ answers = [], is_answered = false }: IndicatorProps) => {
 
 
 export const QuizPagination = () => {
-  const quiz = useCurrentQuiz();
-  const question = useQuestion(quiz)
+  const { id } = useParams<{ id: string }>();
+  const quiz = useFetchQuiz(id);
+  const question = useQuestion(quiz);
   if (!question) return <></>;
   return (
     <Pagination>

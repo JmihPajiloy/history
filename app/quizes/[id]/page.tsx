@@ -5,7 +5,7 @@ import { RadioCard, RadioGroup } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-import { useCurrentQuiz, useFetchQuiz, useQuestion, useSubmitAnswer } from "@/hooks";
+import { useFetchQuiz, useQuestion, useSubmitAnswer } from "@/hooks";
 import { toast } from "sonner";
 import { ChartColumnBig, CircleOff, ShieldAlert } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -75,7 +75,8 @@ const QuizForm = () => {
 
 const Page = () => {
 
-  const quiz = useCurrentQuiz();
+  const { id } = useParams<{ id: string }>();
+  const quiz = useFetchQuiz(id);
   const question = useQuestion(quiz);
 
   if (quiz.isError) {

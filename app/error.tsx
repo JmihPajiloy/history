@@ -42,7 +42,6 @@ export default function Error({ error, reset }: Props) {
   return (
     <main className="flex grow mx-auto flex-col items-center justify-center gap-2 w-56">
      <ShakingContainer className="mb-4">
-
        <CircleAlert className="size-20" />
      </ShakingContainer>
       <h2 className="text-center font-semibold text-xl">Что-то пошло не так!</h2>
