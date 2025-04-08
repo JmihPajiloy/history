@@ -50,12 +50,12 @@ export const Header = () => {
     <header
       className="w-full h-20 flex justify-center items-center sticky shadow top-0 z-30 relative px-4"
       style={{
-        backgroundImage: "url('/demo-2.jpg')",
+        backgroundImage: "url('/header.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       <nav className="flex gap-4 relative z-10">
         <LinkButton href="/#articles">Статьи</LinkButton>
         <LinkButton href="/#quizes">Квизы</LinkButton>

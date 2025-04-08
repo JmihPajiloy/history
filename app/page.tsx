@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <main className="flex flex-col grow">
       <div className="flex flex-col lg:flex-row justify-between items-center p-4 max-w-screen-xl mx-auto w-full">
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 lg:-ml-4">
           <AspectRatio ratio={16 / 9}>
             <Image
               src="/img_1.png"
@@ -17,21 +17,23 @@ export default function Page() {
             />
           </AspectRatio>
         </div>
-        <div className="w-full lg:w-1/2 mt-6 lg:mt-0 lg:pl-10">
-          <h1 className="font-extrabold font-heading text-center lg:text-right text-foreground text-5xl lg:text-6xl">
-            Ленинград. После победы
+        <div className="w-full lg:w-1/2 mt-6 lg:mt-0 lg:pl-12">
+          <h1 className="font-extrabold font-heading text-center lg:text-right text-foreground text-3xl md:text-4xl lg:text-4xl xl:text-5xl lg:whitespace-nowrap">
+            <span className="block lg:inline">Ленинград.</span>{" "}
+            <span className="block lg:inline">После победы</span>
           </h1>
         </div>
       </div>
 
-      <div className="w-full max-w-screen-xl mx-auto px-4 mt-8 mb-4">
+      <div className="w-full max-w-screen-xl mx-auto px-4 mt-4 mb-2">
         <div className="h-px bg-gray-200 w-full"></div>
       </div>
 
       <Articles />
-      <div className="px-4 max-w-screen-xl mx-auto w-full">
+      <Quizes />
+      <div className="px-4 max-w-screen-xl mx-auto w-full mb-8">
         <h2
-          className="font-heading font-extrabold py-10 text-3xl md:text-4xl lg:text-5xl text-center scroll-mt-16"
+          className="font-heading font-extrabold py-10 text-2xl md:text-3xl lg:text-4xl text-center scroll-mt-16"
           id="articles"
         >
           Карты
@@ -64,7 +66,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Quizes />
     </main>
   );
 }

@@ -16,7 +16,7 @@ export const Articles = () => {
   return (
     <>
       <h2
-        className="font-heading font-extrabold py-10 text-3xl md:text-4xl lg:text-5xl text-center scroll-mt-16"
+        className="font-heading font-extrabold pt-4 pb-8 text-2xl md:text-3xl lg:text-4xl text-center scroll-mt-16"
         id="articles"
       >
         Статьи

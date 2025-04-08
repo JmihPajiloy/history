@@ -7,12 +7,12 @@ export const Footer = () => {
     <footer
       className="w-full py-6 border-t-2 px-4 sm:px-10 relative"
       style={{
-        backgroundImage: "url('/demo-2.jpg')",
+        backgroundImage: "url('/header.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 relative z-10 max-w-screen-xl mx-auto">
         <Button asChild variant="link" className="text-base font-bold">
           <Link

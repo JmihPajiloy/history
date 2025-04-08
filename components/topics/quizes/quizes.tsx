@@ -9,7 +9,7 @@ export const Quizes = async () => {
   return (
     <section className="flex flex-col gap-4 items-center overflow-hidden rounded-t-3xl mt-10 p-10 justify-center min-h-96">
       <h2
-        className="font-heading font-extrabold py-10 text-3xl md:text-4xl lg:text-5xl text-center scroll-mt-16"
+        className="font-heading font-extrabold py-10 text-2xl md:text-3xl lg:text-4xl text-center scroll-mt-16"
         id="quizes"
       >
         Квизы
