@@ -9,17 +9,15 @@ type Props = Omit<QuizByIDResponse, "questions">;
 
 export const QuizItemSkeleton = () => {
   return (
-    <TableRow>
-      <TableCell className="font-medium">
-        <Skeleton className="w-fit">
-          Строительство малоэтажек в послевоенном Ленинграде
-        </Skeleton>
+    <TableRow className="border-b border-gray-200 hover:bg-gray-50">
+      <TableCell className="py-4">
+        <Skeleton className="h-6 w-3/4" />
       </TableCell>
       <TableCell className="text-center">
-        <Skeleton className="w-fit inline">Пройден</Skeleton>
+        <Skeleton className="h-6 w-24 mx-auto" />
       </TableCell>
       <TableCell className="flex justify-center">
-        <Skeleton className="sm:w-28 w-9 h-9 shrink-0" />
+        <Skeleton className="h-10 w-28" />
       </TableCell>
     </TableRow>
   );
@@ -27,29 +25,52 @@ export const QuizItemSkeleton = () => {
 
 export const QuizItem = ({ id, title, is_completed }: Props) => {
   return (
-    <TableRow>
-      <TableCell className="font-bold">{title}</TableCell>
-      <TableCell className="text-center font-bold">
-        {is_completed ? <>Пройден</> : <>Не пройден</>}
+    <TableRow className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+      <TableCell className="py-4 text-gray-800 font-medium text-base">
+        {title}
       </TableCell>
-      <TableCell className="flex justify-center">
-        <Button
-          variant={is_completed ? "outline" : "default"}
-          asChild
-          className="sm:w-28 w-9 shrink-0"
-        >
-          {is_completed ? (
-            <Link href={`/quizes/${id}/stats`}>
-              <span className="sm:not-sr-only sr-only">Статистика</span>
-              <ChartColumnBig className="sm:sr-only not-sr-only size-4" />
-            </Link>
-          ) : (
-            <Link href={`/quizes/${id}?question=1`}>
-              <span className="sm:not-sr-only sr-only">Пройти</span>
-              <Play className="sm:sr-only not-sr-only size-4" />
-            </Link>
-          )}
-        </Button>
+      <TableCell className="text-center">
+        {is_completed ? (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+            Пройден
+          </span>
+        ) : (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+            Не пройден
+          </span>
+        )}
+      </TableCell>
+      <TableCell className="p-4">
+        <div className="flex justify-center">
+          <Button
+            variant={is_completed ? "outline" : "default"}
+            size="sm"
+            asChild
+            className={`font-medium ${
+              is_completed
+                ? "border-gray-300 hover:bg-gray-100 text-gray-700"
+                : "bg-black text-white hover:bg-gray-800"
+            }`}
+          >
+            {is_completed ? (
+              <Link
+                href={`/quizes/${id}/stats`}
+                className="flex items-center gap-2 px-4 py-2"
+              >
+                <ChartColumnBig className="h-4 w-4" />
+                <span>Статистика</span>
+              </Link>
+            ) : (
+              <Link
+                href={`/quizes/${id}?question=1`}
+                className="flex items-center gap-2 px-4 py-2"
+              >
+                <Play className="h-4 w-4" />
+                <span>Пройти</span>
+              </Link>
+            )}
+          </Button>
+        </div>
       </TableCell>
     </TableRow>
   );
