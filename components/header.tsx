@@ -57,6 +57,7 @@ export const Header = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       <nav className="flex gap-4 relative z-10">
+        <LinkButton href="/">Главная</LinkButton>
         <LinkButton href="/#articles">Статьи</LinkButton>
         <LinkButton href="/#quizes">Квизы</LinkButton>
       </nav>

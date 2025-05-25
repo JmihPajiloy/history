@@ -1,6 +1,7 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 import { Articles, Quizes } from "@/components/topics";
+import { Gallery } from "@/components/gallery";
 
 export default function Page() {
   return (
@@ -18,9 +19,8 @@ export default function Page() {
           </AspectRatio>
         </div>
         <div className="w-full lg:w-1/2 mt-6 lg:mt-0 lg:pl-12">
-          <h1 className="font-extrabold font-heading text-center lg:text-right text-foreground text-3xl md:text-4xl lg:text-4xl xl:text-5xl lg:whitespace-nowrap">
-            <span className="block lg:inline">Ленинград.</span>{" "}
-            <span className="block lg:inline">После победы</span>
+          <h1 className="font-extrabold font-heading text-center lg:text-left text-foreground text-3xl md:text-4xl lg:text-4xl xl:text-5xl">
+            Ленинград. <span className="whitespace-nowrap">После победы</span>
           </h1>
         </div>
       </div>
@@ -66,6 +66,7 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <Gallery />
     </main>
   );
 }
