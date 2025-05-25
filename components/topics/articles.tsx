@@ -9,6 +9,7 @@ import {
   ArticleCardTitle
 } from "@/components/article-card";
 import { useFetchAllArticles } from "@/hooks";
+import { Button } from "@/components/ui/button";
 
 export const Articles = () => {
   const { isLoading, data, isSuccess } = useFetchAllArticles();
@@ -21,6 +22,13 @@ export const Articles = () => {
       >
         Статьи
       </h2>
+      <div className="text-center mb-4">
+        <Button asChild>
+          <a href="mailto:vision.x2006@gmail.com?subject=Опубликовать%20статью">
+            Хотите опубликовать статью?
+          </a>
+        </Button>
+      </div>
       <div className="flex flex-wrap gap-4 justify-center mx-auto w-full max-w-[49rem]">
         {isLoading && (
           <>

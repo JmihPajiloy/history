@@ -31,6 +31,10 @@ export default function Page() {
 
       <Articles />
       <Quizes />
+      <h3 className="font-heading font-medium text-lg text-center mb-4">
+        Фотогалерея блокадного Ленинграда
+      </h3>
+      <Gallery />
       <div className="px-4 max-w-screen-xl mx-auto w-full mb-8">
         <h2
           className="font-heading font-extrabold py-10 text-2xl md:text-3xl lg:text-4xl text-center scroll-mt-16"
@@ -66,7 +70,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Gallery />
     </main>
   );
 }
